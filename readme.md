@@ -18,7 +18,7 @@
 
 ```sh
 mkdir stub
-docker run -d -v $PWD/sample/stub:/home/wiremock -p 8080:8080 rodolpheche/wiremock
+docker run -d -v $PWD/stub:/home/wiremock -p 8080:8080 rodolpheche/wiremock
 ```
 
 > Simply access [http://localhost:8080/__admin](http://localhost:8080/__admin) to display your mappings (empty set)
