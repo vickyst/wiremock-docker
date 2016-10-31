@@ -27,7 +27,7 @@ docker run -d -v $PWD/stub:/home/wiremock -p 8080:8080 rodolpheche/wiremock
 
 ```sh
 git clone https://github.com/rodolpheche/wiremock-docker.git
-docker run -d -v $PWD/sample/wiremock-docker/sample/stub:/home/wiremock -p 8080:8080 rodolpheche/wiremock
+docker run -d -v $PWD/wiremock-docker/sample/stub:/home/wiremock -p 8080:8080 rodolpheche/wiremock
 ```
 
 > Access [http://localhost:8080/hello](http://localhost:8080/hello) to show Hello World message
@@ -35,7 +35,7 @@ docker run -d -v $PWD/sample/wiremock-docker/sample/stub:/home/wiremock -p 8080:
 ##### Launch a Wiremock container with Wiremock arguments
 
 ```sh
-docker run -d -v $PWD/sample/stub:/home/wiremock -p 8080:8080 -p 8081:8081 -e WIREMOCK_ARGS="--verbose --https-port 8081" rodolpheche/wiremock
+docker run -d -p 8081:8081 -e WIREMOCK_ARGS="--https-port 8081" rodolpheche/wiremock
 ```
 
 > Access [https://localhost:8081/__admin](https://localhost:8081/__admin) to to check https working
