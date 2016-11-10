@@ -8,7 +8,7 @@
 - `2.2.2` [(2.2/Dockerfile)](https://github.com/rodolpheche/wiremock-docker/blob/2.2.2/Dockerfile)
 - `2.1.12` [(2.1/Dockerfile)](https://github.com/rodolpheche/wiremock-docker/blob/2.1.12/Dockerfile)
 
-## The image include 
+## The image includes
 
 - `EXPOSE 8080 8081` : the wiremock http/https server port
 - `VOLUME /home/wiremock` : the wiremock data storage
@@ -54,7 +54,7 @@ docker run -it --rm -p 8081:8081 rodolpheche/wiremock --https-port 8081 --verbos
 
 > Access [https://localhost:8081/__admin](https://localhost:8081/__admin) to to check https working
 
-##### Start a Bash session from the container
+##### Start a Bash session from a container
 
 ```sh
 docker run -d -p 8080:8080 --name rodolpheche-wiremock-container rodolpheche/wiremock
