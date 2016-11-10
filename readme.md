@@ -68,7 +68,7 @@ docker rm -f rodolpheche-wiremock-container
 
 ##### Start record mode using host uid for file creation
 
-In Record mode, when binding host PWD folder with the container volume (/home/wiremock), the created files will be owned by root, which is not expected.
+In Record mode, when binding host folders (ex. $PWD/test) with the container volume (/home/wiremock), the created files will be owned by root, which is, in most cases, undesired.
 To avoid this, you can use the `uid` docker environment variable to also bind host uid with the container executor uid.
 
 ```sh
