@@ -19,7 +19,9 @@
 
 - `uid` : the container executor uid, useful to avoid file creation owned by root
 
-##### Launch a Wiremock container
+#### Getting started
+
+##### Start a Wiremock container
 
 ```sh
 docker run -it --rm -p 8080:8080 rodolpheche/wiremock
@@ -27,7 +29,7 @@ docker run -it --rm -p 8080:8080 rodolpheche/wiremock
 
 > Access [http://localhost:8080/__admin](http://localhost:8080/__admin) to display the mappings (empty set)
 
-##### Launch a Hello World container
+##### Start a Hello World container
 
 ```sh
 git clone https://github.com/rodolpheche/wiremock-docker.git
@@ -36,7 +38,7 @@ docker run -it --rm -v $PWD/wiremock-docker/sample:/home/wiremock -p 8080:8080 r
 
 > Access [http://localhost:8080/hello](http://localhost:8080/hello) to show Hello World message
 
-##### Launch a Wiremock container with Wiremock arguments
+##### Start a Wiremock container with Wiremock arguments
 
 **!! WARNING !!** WIREMOCK_ARGS environment variable is now deprecated, it will be removed in a future version
 
