@@ -51,8 +51,13 @@ In Record mode, when binding host folders (ex. $PWD/test) with the container vol
 To avoid this, you can use the `uid` docker environment variable to also bind host uid with the container executor uid.
 
 ```sh
-docker run -d -p 8080:8080 --name rodolpheche-wiremock-container -v $PWD/test:/home/wiremock -e uid=$(id -u) \
-  rodolpheche/wiremock --proxy-all="http://registry.hub.docker.com" --record-mappings --verbose
+docker run -d --name rodolpheche-wiremock-container \
+  -p 8080:8080 \
+  -v $PWD/test:/home/wiremock \
+  -e uid=$(id -u) \
+  rodolpheche/wiremock \
+    --proxy-all="http://registry.hub.docker.com" \
+    --record-mappings --verbose
 curl http://localhost:8080
 docker rm -f rodolpheche-wiremock-container
 ```
@@ -63,19 +68,20 @@ docker rm -f rodolpheche-wiremock-container
 
 ##### Start a Hello World container
 
-```sh
-git clone https://github.com/rodolpheche/wiremock-docker.git
-```
-
 ###### Inline
 
 ```sh
-docker run -it --rm -p 8080:8080 -v $PWD/wiremock-docker/samples/hello/stubs:/home/wiremock rodolpheche/wiremock
+git clone https://github.com/rodolpheche/wiremock-docker.git
+docker run -it --rm \
+  -p 8080:8080 \
+  -v $PWD/wiremock-docker/samples/hello/stubs:/home/wiremock \
+  rodolpheche/wiremock
 ```
 
 ###### Dockerfile
 
 ```sh
+git clone https://github.com/rodolpheche/wiremock-docker.git
 docker build -t wiremock-hello wiremock-docker/samples/hello
 docker run -it --rm -p 8080:8080 wiremock-hello
 ```
@@ -84,13 +90,10 @@ docker run -it --rm -p 8080:8080 wiremock-hello
 
 ##### Use wiremock extensions
 
-```sh
-git clone https://github.com/rodolpheche/wiremock-docker.git
-```
-
 ###### Inline
 
 ```sh
+git clone https://github.com/rodolpheche/wiremock-docker.git
 # prepare extension folder
 mkdir wiremock-docker/samples/random/extensions
 # download extension
@@ -102,12 +105,13 @@ docker run -it --rm \
   -v $PWD/wiremock-docker/samples/random/stubs:/home/wiremock \
   -v $PWD/wiremock-docker/samples/random/extensions:/var/wiremock/extensions \
   rodolpheche/wiremock \
-  --extensions com.opentable.extension.BodyTransformer
+    --extensions com.opentable.extension.BodyTransformer
 ```
 
 ###### Dockerfile
 
 ```sh
+git clone https://github.com/rodolpheche/wiremock-docker.git
 docker build -t wiremock-random wiremock-docker/samples/random
 docker run -it --rm -p 8080:8080 wiremock-random
 ```
